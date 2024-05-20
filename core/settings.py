@@ -7,7 +7,9 @@ SECRET_KEY = "django-insecure-dwwp#j0@fl0^e*mw3zcp)75&0z!mi0%2ol5bx9^ol5!)lkc@)(
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "projectshopapi.pythonanywhere.com"
+]
 
 
 INSTALLED_APPS = [
