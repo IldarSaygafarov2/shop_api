@@ -16,5 +16,5 @@ class ProductGalleryInline(admin.TabularInline):
 
 @admin.register(models.Product)
 class ProductAdmin(TranslationAdmin):
-    fields = ["title", "description", "compound", "price", "image", "collection"]
+    fields = ["title", "description", "compound", "image", "collection"]
     inlines = [ProductGalleryInline]
