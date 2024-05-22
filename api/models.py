@@ -17,10 +17,9 @@ class Product(models.Model):
     description = models.TextField(verbose_name="Описание")
     compound = models.TextField(verbose_name="Состав")
     image = models.ImageField(verbose_name="Фото", upload_to="products/images/")
-    price = models.DecimalField(verbose_name="Цена", decimal_places=2, max_digits=6)
     collection = models.ForeignKey(
         verbose_name="Категория", to=Collection, on_delete=models.CASCADE,
-        default=''
+        default='', null=True, blank=True
     )
 
     def __str__(self):
