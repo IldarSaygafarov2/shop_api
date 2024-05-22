@@ -4,14 +4,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-dwwp#j0@fl0^e*mw3zcp)75&0z!mi0%2ol5bx9^ol5!)lkc@)("
 
-
 DEBUG = True
 
 ALLOWED_HOSTS = [
     "projectshopapi.pythonanywhere.com",
     '127.0.0.1'
 ]
-
 
 INSTALLED_APPS = [
     "modeltranslation",
@@ -21,10 +19,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "rest_framework",
     "drf_spectacular",
     "django_filters",
     "corsheaders",
+    "constance",
+
     "api.apps.ApiConfig",
 ]
 
@@ -60,14 +61,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "core.wsgi.application"
 
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -84,7 +83,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = "ru"
 
 TIME_ZONE = "Asia/Tashkent"
@@ -92,7 +90,6 @@ TIME_ZONE = "Asia/Tashkent"
 USE_I18N = True
 
 USE_TZ = True
-
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / 'static'
@@ -120,3 +117,31 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sayildar17@gmail.com'  # Replace with your email address
 EMAIL_HOST_PASSWORD = 'qmxv ljwa eljb citb'  # Replace with your email password
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
+CONSTANCE_CONFIG = {
+    'GENERAL_PHONE_NUMBER': ('+998900000000', 'Основной номер телефона'),
+    'GENERAL_EMAIL': ('info@sitename.ru', 'Основная почта сайта'),
+    'GENERAL_ADDRESS': ('Город, улица номер дома', 'Основной адрес'),
+    'GENERAL_ADDRESS_EN': ('Город, улица номер дома', 'Основной адрес'),
+    'GENERAL_ADDRESS_UZ': ('Город, улица номер дома', 'Основной адрес'),
+    'GENERAL_WORKING_TIME': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
+    'GENERAL_WORKING_TIME_EN': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
+    'GENERAL_WORKING_TIME_UZ': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
+}
+
+CONSTANCE_CONFIG_FIELDSETS = {
+    'Общее': {
+        'fields': ('GENERAL_PHONE_NUMBER', 'GENERAL_EMAIL')
+    },
+    'Статичный контент (RU)': {
+        'fields': ('GENERAL_ADDRESS', 'GENERAL_WORKING_TIME')
+    },
+    'Статичный контент (UZ)': {
+        'fields': ('GENERAL_ADDRESS_UZ', 'GENERAL_WORKING_TIME_UZ')
+    },
+    'Статичный контент (EN)': {
+        'fields': ('GENERAL_ADDRESS_EN', 'GENERAL_WORKING_TIME_EN')
+    },
+}

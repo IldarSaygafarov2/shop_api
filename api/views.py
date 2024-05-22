@@ -1,10 +1,30 @@
+from django.core import mail
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from . import models, serializers, filters
-from django.core import mail
+from constance import config
+from django.conf import settings
+
+
+@api_view(['GET'])
+def home_page_settings(request):
+    consts = dir(config)
+    languages = [lang[0] for lang in settings.LANGUAGES]
+
+    res = {}
+    for lang in languages:
+        res[lang] = {}
+        for const in consts:
+            if const.lower().endswith(lang):
+                res[lang][const.lower()] = getattr(config, const)
+        if lang == 'ru':
+            for const in consts:
+                if const in ['GENERAL_ADDRESS', 'GENERAL_WORKING_TIME']:
+                    res['ru'][const.lower()] = getattr(config, const)
+    return Response(res)
 
 
 class CollectionViewSet(viewsets.ModelViewSet):

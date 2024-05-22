@@ -9,6 +9,7 @@ router.register('products', views.ProductViewSet)
 
 
 urlpatterns = [
-    path('send_mail/', views.send_mail)
+    path('send_mail/', views.send_mail),
+    path('vars/', views.home_page_settings)
 ]
 urlpatterns += router.urls
