@@ -8,5 +8,7 @@ router.register('collections', views.CollectionViewSet)
 router.register('products', views.ProductViewSet)
 
 
-urlpatterns = []
+urlpatterns = [
+    path('send_mail/', views.send_mail)
+]
 urlpatterns += router.urls

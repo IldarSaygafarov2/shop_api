@@ -8,7 +8,8 @@ SECRET_KEY = "django-insecure-dwwp#j0@fl0^e*mw3zcp)75&0z!mi0%2ol5bx9^ol5!)lkc@)(
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "projectshopapi.pythonanywhere.com"
+    "projectshopapi.pythonanywhere.com",
+    '127.0.0.1'
 ]
 
 
@@ -112,3 +113,9 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sayildar17@gmail.com'  # Replace with your email address
+EMAIL_HOST_PASSWORD = 'qmxv ljwa eljb citb'  # Replace with your email password
