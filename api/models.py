@@ -14,9 +14,9 @@ class Collection(models.Model):
 
 class Product(models.Model):
     title = models.CharField(verbose_name="Название", max_length=155)
-    description = models.TextField(verbose_name="Описание")
-    compound = models.TextField(verbose_name="Состав")
-    image = models.ImageField(verbose_name="Фото", upload_to="products/images/")
+    description = models.TextField(verbose_name="Описание", default='Описание')
+    compound = models.TextField(verbose_name="Состав", default='Состав')
+    image = models.ImageField(verbose_name="Фото", upload_to="products/images/", null=True, blank=True)
     collection = models.ForeignKey(
         verbose_name="Категория", to=Collection, on_delete=models.CASCADE,
         default='', null=True, blank=True
