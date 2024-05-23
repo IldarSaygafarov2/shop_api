@@ -29,6 +29,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "image",
             "images",
             "collection",
+            # "main_type",
         ]
 
     def to_representation(self, instance):
@@ -38,3 +39,9 @@ class ProductSerializer(serializers.ModelSerializer):
         ]
         data["images"] = images
         return data
+
+
+class CertificateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Certificates
+        fields = ['pk', 'image']

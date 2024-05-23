@@ -1,3 +1,5 @@
+from constance import config
+from django.conf import settings
 from django.core import mail
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
@@ -5,8 +7,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from . import models, serializers, filters
-from constance import config
-from django.conf import settings
 
 
 @api_view(['GET'])
@@ -18,12 +18,14 @@ def home_page_settings(request):
     for lang in languages:
         res[lang] = {}
         for const in consts:
+            if const in ['GENERAL_PHONE_NUMBER', 'GENERAL_EMAIL']:
+                res[const.lower()] = getattr(config, const)
             if const.lower().endswith(lang):
                 res[lang][const.lower()] = getattr(config, const)
-        if lang == 'ru':
-            for const in consts:
+            if lang == 'ru':
                 if const in ['GENERAL_ADDRESS', 'GENERAL_WORKING_TIME']:
                     res['ru'][const.lower()] = getattr(config, const)
+    res = dict(sorted(res.items(), key=lambda x: len(x[0]), reverse=True))
     return Response(res)
 
 
@@ -37,6 +39,21 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProductSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = filters.ProductFilter
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(main_type='dobroe')
+
+
+class ProductAlsafiViewSet(viewsets.ModelViewSet):
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = filters.ProductFilter
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(main_type='alsafi')
 
 
 @api_view(['POST'])
@@ -55,8 +72,7 @@ def send_mail(request):
     )
     return Response({'message': "Данные отправлены"})
 
-# temp = {
-#     "name": "Ildar",
-#     "phone": "+998900000000",
-#     "email": "sayildar17@gmail.com"
-# }
+
+class CertificateViewSet(viewsets.ModelViewSet):
+    queryset = models.Certificates.objects.all()
+    serializer_class = serializers.CertificateSerializer

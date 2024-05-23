@@ -5,7 +5,9 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register('collections', views.CollectionViewSet)
-router.register('products', views.ProductViewSet)
+router.register('certificates', views.CertificateViewSet)
+router.register('products/dobroe', views.ProductViewSet, basename='dobroe-products')
+router.register('products/alsafi', views.ProductAlsafiViewSet, basename='alsafi-products')
 
 
 urlpatterns = [

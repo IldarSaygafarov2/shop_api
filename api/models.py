@@ -13,6 +13,10 @@ class Collection(models.Model):
 
 
 class Product(models.Model):
+    class MainTypeChoices(models.TextChoices):
+        DOBROE = ("dobroe", 'Доброе')
+        ALSAFI = ("alsafi", 'Альсафи')
+
     title = models.CharField(verbose_name="Название", max_length=155)
     description = models.TextField(verbose_name="Описание", default='Описание')
     compound = models.TextField(verbose_name="Состав", default='Состав')
@@ -21,6 +25,7 @@ class Product(models.Model):
         verbose_name="Категория", to=Collection, on_delete=models.CASCADE,
         default='', null=True, blank=True
     )
+    main_type = models.CharField(max_length=10, choices=MainTypeChoices, default=MainTypeChoices.DOBROE)
 
     def __str__(self):
         return self.title
@@ -42,3 +47,14 @@ class ProductGallery(models.Model):
     class Meta:
         verbose_name = "Фото"
         verbose_name_plural = "Фотки"
+
+
+class Certificates(models.Model):
+    image = models.ImageField(verbose_name='Фото', upload_to='certificates/images/')
+
+    def __str__(self):
+        return f'Сертификат №{self.pk}'
+
+    class Meta:
+        verbose_name = 'Сертификат'
+        verbose_name_plural = 'Сертификаты'

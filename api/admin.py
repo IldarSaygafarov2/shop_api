@@ -16,5 +16,8 @@ class ProductGalleryInline(admin.TabularInline):
 
 @admin.register(models.Product)
 class ProductAdmin(TranslationAdmin):
-    fields = ["title", "description", "compound", "image", "collection"]
+    fields = ["title", "description", "compound", "image", "collection", 'main_type']
     inlines = [ProductGalleryInline]
+
+
+admin.site.register(models.Certificates)
