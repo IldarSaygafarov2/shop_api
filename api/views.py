@@ -19,9 +19,11 @@ def home_page_settings(request):
         res[lang] = {}
         for const in consts:
             if const in ['GENERAL_PHONE_NUMBER', 'GENERAL_EMAIL']:
+
                 res[const.lower()] = getattr(config, const)
             if const.lower().endswith(lang):
-                res[lang][const.lower()] = getattr(config, const)
+                _const = const.lower().replace(f'_{lang}', '')
+                res[lang][_const] = getattr(config, const)
             if lang == 'ru':
                 if const in ['GENERAL_ADDRESS', 'GENERAL_WORKING_TIME']:
                     res['ru'][const.lower()] = getattr(config, const)
