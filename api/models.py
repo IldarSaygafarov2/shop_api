@@ -26,6 +26,7 @@ class Product(models.Model):
         default='', null=True, blank=True
     )
     main_type = models.CharField(max_length=10, choices=MainTypeChoices, default=MainTypeChoices.DOBROE)
+    is_new = models.BooleanField(default=False, verbose_name='Новинка ?', null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -58,3 +59,11 @@ class Certificates(models.Model):
     class Meta:
         verbose_name = 'Сертификат'
         verbose_name_plural = 'Сертификаты'
+
+
+class HomeImages(models.Model):
+    image = models.ImageField(verbose_name='Фото', upload_to='homepage/images/')
+
+    class Meta:
+        verbose_name = 'Фото на слайдере'
+        verbose_name_plural = 'Фотки на слайдере'

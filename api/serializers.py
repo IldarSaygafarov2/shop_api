@@ -45,3 +45,5 @@ class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Certificates
         fields = ['pk', 'image']
+
+

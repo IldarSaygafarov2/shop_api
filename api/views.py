@@ -58,6 +58,18 @@ class ProductAlsafiViewSet(viewsets.ModelViewSet):
         return qs.filter(main_type='alsafi')
 
 
+class NewProductsViewSet(viewsets.ModelViewSet):
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = filters.ProductFilter
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(is_new=True)
+
+
+
 @api_view(['POST'])
 def send_mail(request):
     print(request.data)
@@ -78,3 +90,10 @@ def send_mail(request):
 class CertificateViewSet(viewsets.ModelViewSet):
     queryset = models.Certificates.objects.all()
     serializer_class = serializers.CertificateSerializer
+
+
+@api_view(['GET'])
+def get_products_images(request):
+    products = models.HomeImages.objects.all()
+    images = [product.image.url for product in products if product.image]
+    return Response(images)
