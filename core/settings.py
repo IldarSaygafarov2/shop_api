@@ -119,7 +119,7 @@ EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'dilbahdairy@mail.ru'  # Replace with your email address
 EMAIL_HOST_PASSWORD = 'a0nJ2eKgAqzymiSFyi4c'  # Replace with your email password
-
+EMAIL_USE_SSL = False
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
 CONSTANCE_CONFIG = {
