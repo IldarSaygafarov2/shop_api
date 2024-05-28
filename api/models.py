@@ -67,3 +67,11 @@ class HomeImages(models.Model):
     class Meta:
         verbose_name = 'Фото на слайдере'
         verbose_name_plural = 'Фотки на слайдере'
+
+
+class Partner(models.Model):
+    image = models.ImageField(verbose_name='Фото', upload_to='partners/images/')
+
+    class Meta:
+        verbose_name = 'Фото партнера'
+        verbose_name_plural = 'Фото партнеров'

@@ -97,3 +97,14 @@ def get_products_images(request):
     products = models.HomeImages.objects.all()
     images = [product.image.url for product in products if product.image]
     return Response(images)
+
+
+@api_view(['GET'])
+def get_partners_images(request):
+    qs = models.Partner.objects.all()
+    serializer = serializers.PartnerSerializer(qs, many=True)
+    #[{'image': '/media/partners/images/Python-Symbol.png'}, {'image': '/media/partners/images/Python-Symbol_r1D4vv0.png'}]
+    images = []
+    for i in serializer.data:
+        images.append(i['image'])
+    return Response(images)

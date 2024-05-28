@@ -3,6 +3,12 @@ from rest_framework import serializers
 from . import models
 
 
+class PartnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Partner
+        fields = ['image']
+
+
 class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Collection

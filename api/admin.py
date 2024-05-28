@@ -23,3 +23,4 @@ class ProductAdmin(TranslationAdmin):
 
 admin.site.register(models.Certificates)
 admin.site.register(models.HomeImages)
+admin.site.register(models.Partner)
