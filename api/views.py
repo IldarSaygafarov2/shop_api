@@ -81,8 +81,8 @@ def send_mail(request):
     mail.send_mail(
         subject='Обратная связь с сайта',
         message=msg,
-        from_email='sayildar17@gmail.com',
-        recipient_list=['sayildar17@gmail.com']
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[settings.EMAIL_HOST_USER]
     )
     return Response({'message': "Данные отправлены"})
 

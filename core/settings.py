@@ -114,11 +114,11 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'sayildar17@gmail.com'  # Replace with your email address
-EMAIL_HOST_PASSWORD = 'qmxv ljwa eljb citb'  # Replace with your email password
+EMAIL_HOST_USER = 'dilbahdairy@mail.ru'  # Replace with your email address
+EMAIL_HOST_PASSWORD = 'a0nJ2eKgAqzymiSFyi4c'  # Replace with your email password
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
