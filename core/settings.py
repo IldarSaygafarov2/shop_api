@@ -113,14 +113,14 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
-EMAIL_HOST_USER = 'dilbahdairy@gmail.com'  # Replace with your email address
-EMAIL_HOST_PASSWORD = 'uago btnw pvzk qzvk'  # Replace with your email password
-EMAIL_USE_SSL = True
-CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 465
+# EMAIL_USE_TLS = False
+# EMAIL_HOST_USER = 'dilbahdairy@gmail.com'  # Replace with your email address
+# EMAIL_HOST_PASSWORD = 'uago btnw pvzk qzvk'  # Replace with your email password
+# EMAIL_USE_SSL = True
+# CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
 CONSTANCE_CONFIG = {
     'GENERAL_PHONE_NUMBER': ('+998900000000', 'Основной номер телефона'),

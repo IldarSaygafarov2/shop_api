@@ -70,21 +70,21 @@ class NewProductsViewSet(viewsets.ModelViewSet):
 
 
 
-@api_view(['POST'])
-def send_mail(request):
-    print(request.data)
-    msg = f"""
-Имя: {request.data['name']}
-Номер телефона: {request.data['phone']}
-Почта: {request.data['email']}    
-    """
-    mail.send_mail(
-        subject='Обратная связь с сайта',
-        message=msg,
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[settings.EMAIL_HOST_USER]
-    )
-    return Response({'message': "Данные отправлены"})
+# @api_view(['POST'])
+# def send_mail(request):
+#     print(request.data)
+#     msg = f"""
+# Имя: {request.data['name']}
+# Номер телефона: {request.data['phone']}
+# Почта: {request.data['email']}    
+#     """
+#     mail.send_mail(
+#         subject='Обратная связь с сайта',
+#         message=msg,
+#         from_email=settings.EMAIL_HOST_USER,
+#         recipient_list=[settings.EMAIL_HOST_USER]
+#     )
+#     return Response({'message': "Данные отправлены"})
 
 
 class CertificateViewSet(viewsets.ModelViewSet):
