@@ -86,3 +86,17 @@ class Partner(models.Model):
     class Meta:
         verbose_name = "Фото партнера"
         verbose_name_plural = "Фото партнеров"
+
+
+class About(models.Model):
+    year = models.CharField(max_length=30, verbose_name='Года')
+    company_name = models.CharField(max_length=40, verbose_name='Название компании', default='BIO NATURAL FOOD')
+    title = models.CharField(max_length=50, verbose_name='Заголовок')
+    description = models.TextField(verbose_name='Описание')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Элемент истории'
+        verbose_name_plural = 'Элементы истории'

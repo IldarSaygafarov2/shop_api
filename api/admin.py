@@ -21,6 +21,12 @@ class ProductAdmin(TranslationAdmin):
     inlines = [ProductGalleryInline]
 
 
+@admin.register(models.About)
+class AboutAdmin(TranslationAdmin):
+    fields = ['title', 'description', 'year', 'company_name']
+
+
+
 admin.site.register(models.Certificates)
 admin.site.register(models.HomeImages)
 admin.site.register(models.Partner)

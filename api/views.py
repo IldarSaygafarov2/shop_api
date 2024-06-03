@@ -2,10 +2,9 @@ from constance import config
 from django.conf import settings
 from django.core import mail
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 from . import models, serializers, filters
 
 
@@ -108,3 +107,9 @@ def get_partners_images(request):
     for i in serializer.data:
         images.append(i['image'])
     return Response(images)
+
+
+class AboutListAPIView(generics.ListAPIView):
+    pagination_class = None
+    queryset = models.About.objects.all()
+    serializer_class = serializers.AboutSerializer

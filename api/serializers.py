@@ -53,3 +53,7 @@ class CertificateSerializer(serializers.ModelSerializer):
         fields = ['pk', 'image']
 
 
+class AboutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.About
+        fields = ['pk', 'title', 'description', 'year', 'company_name']
