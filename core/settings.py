@@ -8,6 +8,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "projectshopapi.pythonanywhere.com",
+    "projectshopapiv2.pythonanywhere.com",
     '127.0.0.1'
 ]
 
