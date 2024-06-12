@@ -132,6 +132,15 @@ CONSTANCE_CONFIG = {
     'GENERAL_WORKING_TIME': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
     'GENERAL_WORKING_TIME_EN': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
     'GENERAL_WORKING_TIME_UZ': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
+    'TITLE': ('', 'Заголовок главной страницы'),
+    'TITLE_EN': ('', 'Заголовок главной страницы'),
+    'TITLE_UZ': ('', 'Заголовок главной страницы'),
+    'TEXT': ('', 'Текст главной страницы'),
+    'TEXT_EN': ('', 'Текст главной страницы'),
+    'TEXT_UZ': ('', 'Текст главной страницы'),
+    'SLOGAN': ('', 'Слоган главной страницы'),
+    'SLOGAN_UZ': ('', 'Слоган главной страницы'),
+    'SLOGAN_EN': ('', 'Слоган главной страницы'),
 }
 
 CONSTANCE_CONFIG_FIELDSETS = {
@@ -139,13 +148,13 @@ CONSTANCE_CONFIG_FIELDSETS = {
         'fields': ('GENERAL_PHONE_NUMBER', 'GENERAL_EMAIL')
     },
     'Статичный контент (RU)': {
-        'fields': ('GENERAL_ADDRESS', 'GENERAL_WORKING_TIME')
+        'fields': ('GENERAL_ADDRESS', 'GENERAL_WORKING_TIME', 'TITLE', 'TEXT', 'SLOGAN')
     },
     'Статичный контент (UZ)': {
-        'fields': ('GENERAL_ADDRESS_UZ', 'GENERAL_WORKING_TIME_UZ')
+        'fields': ('GENERAL_ADDRESS_UZ', 'GENERAL_WORKING_TIME_UZ', 'TITLE_UZ', 'TEXT_UZ', 'SLOGAN_UZ')
     },
     'Статичный контент (EN)': {
-        'fields': ('GENERAL_ADDRESS_EN', 'GENERAL_WORKING_TIME_EN')
+        'fields': ('GENERAL_ADDRESS_EN', 'GENERAL_WORKING_TIME_EN', 'TITLE_EN', 'TEXT_EN', 'SLOGAN_EN')
     },
 }
 

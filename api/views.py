@@ -18,13 +18,13 @@ def home_page_settings(request):
         res[lang] = {}
         for const in consts:
             if const in ['GENERAL_PHONE_NUMBER', 'GENERAL_EMAIL']:
-
                 res[const.lower()] = getattr(config, const)
             if const.lower().endswith(lang):
                 _const = const.lower().replace(f'_{lang}', '')
                 res[lang][_const] = getattr(config, const)
             if lang == 'ru':
-                if const in ['GENERAL_ADDRESS', 'GENERAL_WORKING_TIME']:
+                general_options = ['GENERAL_ADDRESS', 'GENERAL_WORKING_TIME', 'TITLE', 'TEXT', 'SLOGAN']
+                if const in general_options:
                     res['ru'][const.lower()] = getattr(config, const)
     res = dict(sorted(res.items(), key=lambda x: len(x[0]), reverse=True))
     return Response(res)
@@ -68,7 +68,6 @@ class NewProductsViewSet(viewsets.ModelViewSet):
         return qs.filter(is_new=True)
 
 
-
 @api_view(['POST'])
 def send_mail(request):
     print(request.data)
@@ -98,11 +97,16 @@ def get_products_images(request):
     return Response(images)
 
 
+class HomeImagesAPIView(generics.ListAPIView):
+    queryset = models.HomeImages.objects.all()
+    serializer_class = serializers.HomeImagesSerializer
+    pagination_class = None
+
 @api_view(['GET'])
 def get_partners_images(request):
     qs = models.Partner.objects.all()
     serializer = serializers.PartnerSerializer(qs, many=True)
-    #[{'image': '/media/partners/images/Python-Symbol.png'}, {'image': '/media/partners/images/Python-Symbol_r1D4vv0.png'}]
+    # [{'image': '/media/partners/images/Python-Symbol.png'}, {'image': '/media/partners/images/Python-Symbol_r1D4vv0.png'}]
     images = []
     for i in serializer.data:
         images.append(i['image'])

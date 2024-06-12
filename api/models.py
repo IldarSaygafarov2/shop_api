@@ -24,6 +24,10 @@ class Product(models.Model):
     image = ResizedImageField(
         verbose_name="Фото", upload_to="products/images/", null=True, blank=True, force_format='WEBP'
     )
+    weight = models.CharField(max_length=150, verbose_name='Объем', null=True, blank=True)
+    food_value = models.CharField(max_length=150, verbose_name='Пищевая ценность', null=True, blank=True)
+    energy_value = models.CharField(max_length=150, verbose_name='Энергетическая ценность', null=True, blank=True)
+    date = models.CharField(max_length=150, verbose_name='Срок годности', null=True, blank=True)
     collection = models.ForeignKey(
         verbose_name="Категория",
         to=Collection,
@@ -73,7 +77,12 @@ class Certificates(models.Model):
 
 
 class HomeImages(models.Model):
-    image = ResizedImageField(verbose_name="Фото", upload_to="homepage/images/", force_format='WEBP')
+    mobile_image = models.ImageField(verbose_name="Фото на телефоны",
+                                     upload_to="homepage/images/",
+                                     null=True, blank=True)
+    desktop_image = models.ImageField(verbose_name="Фото на десктоп",
+                                      upload_to="homepage/images/",
+                                      null=True, blank=True)
 
     class Meta:
         verbose_name = "Фото на слайдере"

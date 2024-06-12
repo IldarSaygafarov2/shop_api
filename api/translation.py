@@ -8,7 +8,7 @@ class CollectionTranslationOptions(TranslationOptions):
 
 
 class ProductTranslationOptions(TranslationOptions):
-    fields = ["title", "description", "compound"]
+    fields = ["title", "description", "compound", "weight", "food_value", 'energy_value', 'date']
 
 
 class AboutTranslationOptions(TranslationOptions):

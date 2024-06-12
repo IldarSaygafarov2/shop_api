@@ -3,6 +3,11 @@ from rest_framework import serializers
 from . import models
 
 
+class HomeImagesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.HomeImages
+        fields = ['mobile_image', 'desktop_image']
+
 class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Partner
