@@ -40,6 +40,10 @@ class ProductSerializer(serializers.ModelSerializer):
             "image",
             "images",
             "collection",
+            "weight",
+            "food_value",
+            "energy_value",
+            "date",
             # "main_type",
         ]
 
