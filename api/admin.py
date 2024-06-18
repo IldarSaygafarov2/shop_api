@@ -16,15 +16,29 @@ class ProductGalleryInline(admin.TabularInline):
 
 @admin.register(models.Product)
 class ProductAdmin(TranslationAdmin):
-    fields = ["title", "description", "compound", "image", "collection", 'main_type', 'is_new']
-    list_display = ["title", "description", "compound", "image", "collection", 'main_type', 'is_new']
+
+    list_display = ["title", "description", "compound", "image", "weight", "food_value", "energy_value", "date",
+                    "collection", 'main_type', 'is_new']
+    fieldsets = [
+        (
+            "Общее",
+            {
+                'fields': ["title", "description", "compound", "image", "collection", 'main_type', 'is_new']
+            }
+        ),
+        (
+            "Характеристики",
+            {
+               'fields': ["weight", "food_value", "energy_value", "date"]
+            }
+        )
+    ]
     inlines = [ProductGalleryInline]
 
 
 @admin.register(models.About)
 class AboutAdmin(TranslationAdmin):
     fields = ['title', 'description', 'year', 'company_name']
-
 
 
 admin.site.register(models.Certificates)
