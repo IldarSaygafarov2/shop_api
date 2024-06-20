@@ -4,7 +4,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-dwwp#j0@fl0^e*mw3zcp)75&0z!mi0%2ol5bx9^ol5!)lkc@)("
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "projectshopapi.pythonanywhere.com",
@@ -69,7 +69,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
+ 
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -93,11 +93,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = "staticfiles/"
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / 'static'
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'shop_api/static'
+# ]
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
