@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,8 +10,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "projectshopapi.pythonanywhere.com",
     "api.dilbahdairy.dilbahdairy.uz",
-    '45.138.158.131',
-    '127.0.0.1'
+    "45.138.158.131",
+    "127.0.0.1",
 ]
 
 INSTALLED_APPS = [
@@ -21,13 +22,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "rest_framework",
     "drf_spectacular",
     "django_filters",
     "corsheaders",
     "constance",
-
     "api.apps.ApiConfig",
 ]
 
@@ -69,7 +68,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
- 
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -93,11 +92,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / 'static'
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'shop_api/static'
-# ]
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -114,59 +113,61 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 15
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 15,
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
-EMAIL_HOST_USER = 'dilbahdairy@gmail.com'  # Replace with your email address
-EMAIL_HOST_PASSWORD = 'uago btnw pvzk qzvk'  # Replace with your email password
+EMAIL_HOST_USER = "dilbahdairy@gmail.com"  # Replace with your email address
+EMAIL_HOST_PASSWORD = "uago btnw pvzk qzvk"  # Replace with your email password
 EMAIL_USE_SSL = True
-CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 
 CONSTANCE_CONFIG = {
-    'GENERAL_PHONE_NUMBER': ('+998900000000', 'Основной номер телефона'),
-    'GENERAL_EMAIL': ('info@sitename.ru', 'Основная почта сайта'),
-    'GENERAL_ADDRESS': ('Город, улица номер дома', 'Основной адрес'),
-    'GENERAL_ADDRESS_EN': ('Город, улица номер дома', 'Основной адрес'),
-    'GENERAL_ADDRESS_UZ': ('Город, улица номер дома', 'Основной адрес'),
-    'GENERAL_WORKING_TIME': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
-    'GENERAL_WORKING_TIME_EN': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
-    'GENERAL_WORKING_TIME_UZ': ('Ежедневно, с 9:00 до 20:00', 'Время работы'),
-    'TITLE': ('', 'Заголовок главной страницы'),
-    'TITLE_EN': ('', 'Заголовок главной страницы'),
-    'TITLE_UZ': ('', 'Заголовок главной страницы'),
-    'TEXT': ('', 'Текст главной страницы'),
-    'TEXT_EN': ('', 'Текст главной страницы'),
-    'TEXT_UZ': ('', 'Текст главной страницы'),
-    'SLOGAN': ('', 'Слоган главной страницы'),
-    'SLOGAN_UZ': ('', 'Слоган главной страницы'),
-    'SLOGAN_EN': ('', 'Слоган главной страницы'),
+    "GENERAL_PHONE_NUMBER": ("+998900000000", "Основной номер телефона"),
+    "GENERAL_EMAIL": ("info@sitename.ru", "Основная почта сайта"),
+    "GENERAL_ADDRESS": ("Город, улица номер дома", "Основной адрес"),
+    "GENERAL_ADDRESS_EN": ("Город, улица номер дома", "Основной адрес"),
+    "GENERAL_ADDRESS_UZ": ("Город, улица номер дома", "Основной адрес"),
+    "GENERAL_WORKING_TIME": ("Ежедневно, с 9:00 до 20:00", "Время работы"),
+    "GENERAL_WORKING_TIME_EN": ("Ежедневно, с 9:00 до 20:00", "Время работы"),
+    "GENERAL_WORKING_TIME_UZ": ("Ежедневно, с 9:00 до 20:00", "Время работы"),
+    "TITLE": ("", "Заголовок главной страницы"),
+    "TITLE_EN": ("", "Заголовок главной страницы"),
+    "TITLE_UZ": ("", "Заголовок главной страницы"),
+    "TEXT": ("", "Текст главной страницы"),
+    "TEXT_EN": ("", "Текст главной страницы"),
+    "TEXT_UZ": ("", "Текст главной страницы"),
+    "SLOGAN": ("", "Слоган главной страницы"),
+    "SLOGAN_UZ": ("", "Слоган главной страницы"),
+    "SLOGAN_EN": ("", "Слоган главной страницы"),
 }
 
 CONSTANCE_CONFIG_FIELDSETS = {
-    'Общее': {
-        'fields': ('GENERAL_PHONE_NUMBER', 'GENERAL_EMAIL')
+    "Общее": {"fields": ("GENERAL_PHONE_NUMBER", "GENERAL_EMAIL")},
+    "Статичный контент (RU)": {
+        "fields": ("GENERAL_ADDRESS", "GENERAL_WORKING_TIME", "TITLE", "TEXT", "SLOGAN")
     },
-    'Статичный контент (RU)': {
-        'fields': ('GENERAL_ADDRESS', 'GENERAL_WORKING_TIME', 'TITLE', 'TEXT', 'SLOGAN')
+    "Статичный контент (UZ)": {
+        "fields": (
+            "GENERAL_ADDRESS_UZ",
+            "GENERAL_WORKING_TIME_UZ",
+            "TITLE_UZ",
+            "TEXT_UZ",
+            "SLOGAN_UZ",
+        )
     },
-    'Статичный контент (UZ)': {
-        'fields': ('GENERAL_ADDRESS_UZ', 'GENERAL_WORKING_TIME_UZ', 'TITLE_UZ', 'TEXT_UZ', 'SLOGAN_UZ')
-    },
-    'Статичный контент (EN)': {
-        'fields': ('GENERAL_ADDRESS_EN', 'GENERAL_WORKING_TIME_EN', 'TITLE_EN', 'TEXT_EN', 'SLOGAN_EN')
+    "Статичный контент (EN)": {
+        "fields": (
+            "GENERAL_ADDRESS_EN",
+            "GENERAL_WORKING_TIME_EN",
+            "TITLE_EN",
+            "TEXT_EN",
+            "SLOGAN_EN",
+        )
     },
 }
-
-DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
-DJANGORESIZED_DEFAULT_SCALE = 0.5
-DJANGORESIZED_DEFAULT_QUALITY = 75
-DJANGORESIZED_DEFAULT_KEEP_META = True
-DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
-DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
-DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
