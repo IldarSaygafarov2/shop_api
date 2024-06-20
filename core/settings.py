@@ -4,7 +4,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-dwwp#j0@fl0^e*mw3zcp)75&0z!mi0%2ol5bx9^ol5!)lkc@)("
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "projectshopapi.pythonanywhere.com",
@@ -95,6 +95,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / 'static'
+
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
