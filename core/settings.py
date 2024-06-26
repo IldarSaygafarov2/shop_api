@@ -13,7 +13,9 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     'apidilbahdairy.uz'
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://apidilbahdairy.uz'
+]
 INSTALLED_APPS = [
     "modeltranslation",
     "django.contrib.admin",
