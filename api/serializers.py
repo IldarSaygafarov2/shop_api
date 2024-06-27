@@ -27,9 +27,8 @@ class ProductGallerySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    images = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    images = ProductGallerySerializer(many=True, read_only=True)
     collection = serializers.StringRelatedField(many=False)
-
     class Meta:
         model = models.Product
         fields = [
@@ -44,16 +43,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "food_value",
             "energy_value",
             "date",
-            # "main_type",
         ]
-
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        images = [
-            models.ProductGallery.objects.get(pk=pk).image.url for pk in data["images"]
-        ]
-        data["images"] = images
-        return data
 
 
 class CertificateSerializer(serializers.ModelSerializer):

@@ -15,7 +15,7 @@ urlpatterns = [
     path('send_mail/', views.send_mail),
     path('vars/', views.home_page_settings),
     path('images/', views.HomeImagesAPIView.as_view()),
-    path('partners/images/', views.get_partners_images),
+    path('partners/images/', views.PartnersImagesView.as_view()),
     path('about/', views.AboutListAPIView.as_view())
 ]
 urlpatterns += router.urls
